@@ -7,11 +7,21 @@ commands:
 orbs:
   welcome: circleci/welcome-orb@0.4.1
 jobs:
+  print-hello:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      run: echo "Hello"
 
-
+  print-world:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      run: echo "World"
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      - print-hello
+      - print-world
