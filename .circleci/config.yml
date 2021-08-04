@@ -5,23 +5,13 @@ commands:
 
 
 orbs:
-# Declare a dependency on the welcome-orb
-
+  welcome: circleci/welcome-orb@0.4.1
 jobs:
-  print-hello:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: exit 1
-      - run:
-          name: error
-          command: echo "Error!"
-          when: on_fail
+
 
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-
-      - print-hello
+      - welcome/run
